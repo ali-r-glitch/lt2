@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cassert>
-#include <bmi.cpp>
+#include "bmi.cpp"
 
 using namespace std;
 
