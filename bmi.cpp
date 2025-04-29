@@ -13,9 +13,9 @@ double ounces2pounds(int x)
     return(x/16.0);
 }
 //converts from  stones to pounds
-int stones2pounds(int x)
+int stones2pounds(char x)
 {
-    return(x*14);
+    return(x*114);
 }
 //converts total weight to metric kilgrams
 double weight2kg(int stones, int pounds, int ounces)
@@ -50,7 +50,7 @@ void process_data(char* input_file, char* output_file)
     string person_id;
     int pounds, stones, ounces, feet, inches;
     double kg, m;
-    char cat;
+    int cat;
 
     f_in.open(input_file,ios::in);
     f_out.open(output_file,ofstream::out);
@@ -72,5 +72,5 @@ if(argc==3)    // KJN - Need to check that 3 arguments were supplied upon execut
 {    
 process_data(argv[1], argv[2]);
 }
-return 0;
+return -1;
 }
