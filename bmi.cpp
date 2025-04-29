@@ -64,7 +64,7 @@ void process_data(char* input_file, char* output_file)
     f_in.close();
     f_out.close();
 }
-        
+
 int main(int argc, char *argv[])
 {
     // KJN - Need to check that 3 arguments were supplied upon execution
