@@ -68,6 +68,9 @@ void process_data(char* input_file, char* output_file)
 
 int main(int argc, char *argv[])
 {
-    // KJN - Need to check that 3 arguments were supplied upon execution
-    process_data(argv[1], argv[2]);
+if(argc==3)    // KJN - Need to check that 3 arguments were supplied upon execution
+{    
+process_data(argv[1], argv[2]);
+}
+return 0;
 }
