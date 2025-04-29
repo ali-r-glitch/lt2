@@ -1,48 +1,49 @@
 // KJN - it is good practice to insert comment about intended use, context, contributors, etc
-
+// This code calculates bmi. It takes a unique code ,stone, poundsm 
+//ounces, feet,inches. They should seperated by a space . It then output 
+// id and score 
 #include <iostream>
 #include <fstream>
 #include <string>
 
 using namespace std;
-
-int ounces2pounds(int x)
+//converts the weight in ounces to pounds
+double ounces2pounds(int x)
 {
-    return(x*16);
+    return(x/16.0);
 }
-
+//converts from  stones to pounds
 int stones2pounds(int x)
 {
     return(x*14);
 }
-
+//converts total weight to metric kilgrams
 double weight2kg(int stones, int pounds, int ounces)
 {
     return (stones2pounds(stones)+pounds+ounces2pounds(ounces))/2.2;
 }
-
+//calculates the total height in meters
 double height2metres(int feet, int inches)
 {
-    return(feet/3.82);
+    return (((feet*12) + inches) *0.0254);
 }
 
 char categorise(double kg, double metre)
-{
-    double bmi = kg*kg/metre;
+{//groups the bmi toa responding symbol 
+    double bmi = kg/(metre*metre);
     char cat;
-    if (bmi<19)
-        cat='A';
-    else if (bmi<=26)
-        cat='B';
-    else if (bmi<=30)
-        cat='C';
+       if (bmi < 19)
+        return 'A';
+    else if (bmi <= 26)
+        return 'B';
+    else if (bmi <= 30)
+        return 'C';
     else
-        cat='D';
-    return(cat);
+        return 'D';
 }
 
 void process_data(char* input_file, char* output_file)
-{
+{//gets infromation and strips it into  variables 
     ifstream f_in;
     ofstream f_out;
     string data;
@@ -55,7 +56,7 @@ void process_data(char* input_file, char* output_file)
     f_out.open(output_file,ofstream::out);
     while (!f_in.eof())
     {
-    	f_in >> person_id >> pounds >> stones >> ounces >> feet >> inches;
+    	f_in >> person_id >>stones>> pounds >> ounces >> feet >> inches;
         kg=weight2kg(int(stones),int(pounds),int(ounces));
         m =height2metres(int(feet),int(inches));
         cat=categorise(kg,m);
